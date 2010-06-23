@@ -1,0 +1,114 @@
+#-------------------------------------------------------------------------------
+# Queries
+#-------------------------------------------------------------------------------
+
+# Selects
+snippet sel
+	SELECT ${1:*}
+	FROM ${2:tablename}
+	WHERE (${3:condition})
+
+# Joins
+snippet join
+	JOIN ${1:tablename} AS ${2:t} ON $2.${3:field} = ${4:t2}.${5:field}
+snippet idjoin
+	JOIN ${1:tablename_singular}s AS ${2:t} ON $2.${3:id} = ${4:t2}.$1_id
+
+# Inserts
+snippet ins
+	INSERT INTO ${1:tablename} VALUES
+		(${3:values})
+snippet insv
+	INSERT INTO ${1:tablename} 
+		(${2:columns})
+	VALUES
+		(${3:values})
+snippet insc
+	INSERT INTO ${1:tablename}
+		SET ${2:column}=${3:value}
+snippet inss
+	INSERT INTO ${1:tablename} 
+		(${2:columns})
+		sel${3}
+
+# Updates	
+snippet upd
+	UPDATE ${1:tablename}
+		SET ${3:cols_values}
+		WHERE ${4:condition}
+
+#-------------------------------------------------------------------------------
+# Pre-fabricated solutions for common problems in e.g. warehousing
+#-------------------------------------------------------------------------------
+
+# Recursion
+snippet partlist PostgreSQL
+	WITH RECURSIVE $1(${2:sub_part}, ${3:part}, ${4:quantity}) AS (
+		SELECT $2, $3, $4
+		FROM $5 
+		WHERE ${6:condition}
+	  UNION ALL
+		SELECT $5.$2, $5.$3, $5.$4
+		FROM ${1:queryname}, ${5:parts} 
+		WHERE $5.$3 = $1.$2
+	  )
+	SELECT $2, SUM($4) as total_$4
+	FROM $1
+	GROUP BY $2
+
+
+#--------------------------------------------------------------------------------
+# Data definition
+#--------------------------------------------------------------------------------
+snippet db
+	CREATE DATABASE IF NOT EXISTS ${1:dbname}
+
+snippet ctab PostgreSQL
+	CREATE TABLE ${1:tablename} (
+		id serial NOT NULL PRIMARY KEY,
+		${2}
+	)
+snippet ctab MySQL
+	CREATE TABLE ${1:tablename} (
+		id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		${2}
+	)
+
+# create n:m table
+snippet cnmtab PostgreSQL
+	CREATE TABLE ${1:table1}s_${2:table2}s (
+		$1_id INT NOT NULL INDEX($1_index) REFERENCES $1s (id),
+		$2_id INT NOT NULL INDEX($2_index) REFERENCES $2s (id),
+		PRIMARY KEY $1_id, $2_id
+	)
+	${3}
+snippet cnmtab MySQL
+	CREATE TABLE ${1:table1}s_${2:table2}s (
+		$1_id INT NOT NULL INDEX($1_index) REFERENCES $1s (id),
+		$2_id INT NOT NULL INDEX($2_index) REFERENCES $2s (id),
+		PRIMARY KEY $1_id, $2_id
+	)
+	${3}
+
+snippet cview
+	CREATE VIEW ${1:viewname} AS
+		sel${2}
+
+#-------------------------------------------------------------------------------
+# Field types
+#-------------------------------------------------------------------------------
+snippet int
+	'${1:varname}' INT,
+snippet vc
+	'${1:varname}' VARCHAR(${2:50}),
+	${3}
+snippet nvc
+	'${1:varname}' NVARCHAR(${2:50}),
+	${3}
+
+#-------------------------------------------------------------------------------
+# Access rights
+#-------------------------------------------------------------------------------
+snippet grant
+	GRANT ${1:rights} ON ${2:name} TO '${3:username}'
+
