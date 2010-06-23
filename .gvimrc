@@ -5,7 +5,7 @@ set go-=T
 set bg=dark
 if &background == "dark"
     hi normal guibg=black
-    #set transp=6
+    "set transp=6
 endif
 
 colors joerg
