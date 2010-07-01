@@ -148,3 +148,5 @@ promptinit
 
 # Use the wunjo prompt theme
 prompt wunjo
+
+bindkey -v
