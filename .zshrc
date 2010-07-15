@@ -40,6 +40,8 @@ alias lisp="sbcl --script "
 alias ilisp="sbcl --noinform"
 alias clj="java -cp /usr/share/java:/usr/share/java/clojure-contrib.jar:/usr/share/java/jline.jar:/usr/share/java/clojure.jar jline.ConsoleRunner clojure.main"
 
+alias irb='irb --prompt simple'
+
 alias untar='tar -xzf'
 
 autoload -Uz colors && colors

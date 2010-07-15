@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/joerg/.vim'
-let g:netrw_dirhist_2='/home/joerg/.vim/ftplugin/lisp/limp'
-let g:netrw_dirhist_3='/home/joerg/dev/ruby/demo'
-let g:netrw_dirhist_4='/home/joerg/dev/compiler/assemblertest'
-let g:netrw_dirhist_5='/home/joerg/.zsh'

@@ -20,3 +20,11 @@ for p in sys.path:
         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
 
+function! Pretty()
+python << EOF
+import vim, BeautifulSoup
+soup = BeautifulSoup.BeautifulSoup("".join(vim.current.buffer[:]))
+vim.current.buffer[:] = soup.prettify().split('\n')
+EOF
+endfunction
+
