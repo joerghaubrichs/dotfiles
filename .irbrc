@@ -1,7 +1,11 @@
-# The irbrc file for Sebastian Delmont 
 #
 # Most of the code here came from http://wiki.rubygarden.org/Ruby/page/show/Irb/TipsAndTricks
 #
+require 'rubygems'
+require 'wirble'
+Wirble.init
+Wirble.colorize
+
 unless self.class.const_defined? "IRB_RC_HAS_LOADED"
   HISTFILE = "~/.irb.hist"
   MAXHISTSIZE = 100
@@ -60,11 +64,11 @@ unless self.class.const_defined? "IRB_RC_HAS_LOADED"
 
     if IRB and IRB.conf[:PROMPT]
       IRB.conf[:PROMPT][:SD] = {
-        :PROMPT_I =>  "#{ANSI_LGREEN}In: #{ANSI_RESET} ", # normal prompt
+        :PROMPT_I =>  "#{ANSI_LGREEN}In  >> #{ANSI_RESET} ", # normal prompt
         :PROMPT_S => "%l> ",  # string continuation
         :PROMPT_C => " > ",   # code continuation
         :PROMPT_N => " > ",   # code continuation too?
-        :RETURN   => "#{ANSI_RED}Out: #{ANSI_RESET} %s  \n\n",  # return value
+        :RETURN   => "#{ANSI_RED}Out >> #{ANSI_RESET} %s  \n\n",  # return value
         :AUTO_INDENT => true
       }
       IRB.conf[:PROMPT_MODE] = :SD
