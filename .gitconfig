@@ -1,0 +1,26 @@
+[alias]
+   a = add
+   st = status
+   d = diff
+   ci = commit -v
+   cia = commit -v -a
+   csm = commit -sm
+   co = checkout
+   cp = cherry-pick
+   l = log
+   ll = log -p
+   lt = log trunk..
+   llt = log -p trunk..
+   lm = log master..
+   llm = log -p master..
+   b = branch
+[color]
+   diff = auto
+   branch = auto
+   status = auto
+[user]
+	email = joerghaubrichs@googlemail.com
+	name = joerg
+[github]
+	user = noname
+

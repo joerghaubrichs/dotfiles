@@ -5,6 +5,7 @@ export PATH=$PATH:/sw/bin:~/Skripte:/Applications/OpenLaszlo\ Server\ 4.5.1/bin:
 export BOOST_ROOT=/usr/local/boost
 export PATH=/opt/local/bin:/bin:/sbin:/usr/bin:/usr/local/bin:/usr/sbin:/sw/bin:/opt/local/bin:/var/lib/gems/1.8/bin:$PATH
 export EDITOR=vim
+export BROWSER=google-chrome
 
 #
 # GO settings
@@ -40,9 +41,18 @@ alias lisp="sbcl --script "
 alias ilisp="sbcl --noinform"
 alias clj="java -cp /usr/share/java:/usr/share/java/clojure-contrib.jar:/usr/share/java/jline.jar:/usr/share/java/clojure.jar jline.ConsoleRunner clojure.main"
 
-alias irb='irb --prompt simple'
+md() { 
+    echo "<?xml version='1.0' encoding='UTF-8'?> `markdown $1`" > $1.html;
+}
+
+mds() {
+    echo "<?xml version='1.0' encoding='UTF-8'?> `markdown $1`" > $1.html && $BROWSER $1.html;
+}
 
 alias untar='tar -xzf'
+
+alias zs="source ~/.zshrc"
+alias zed="v ~/.zshrc"
 
 autoload -Uz colors && colors
 local text="%{$fg_no_bold[cyan]%}"

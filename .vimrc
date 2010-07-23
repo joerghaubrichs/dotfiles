@@ -1,9 +1,9 @@
 set hlsearch
 set number
 set expandtab
-set softtabstop=4
-set shiftwidth=4
-set tabstop=4
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
 set background=dark
 set autoindent
 set textwidth=0

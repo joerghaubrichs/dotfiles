@@ -202,6 +202,8 @@ hi link htmlTag         Keyword
 hi link htmlTagName     Conditional 
 hi link htmlEndTag      Identifier 
 
+hi mkdH1   guifg=black     guibg=yellow    gui=NONE      ctermfg=black ctermbg=NONE        cterm=NONE
+hi mkdH2   guifg=black     guibg=#cccc00    gui=NONE      ctermfg=black ctermbg=NONE        cterm=NONE
 
 " Special for Javascript
 hi link javaScriptNumber      Number 
