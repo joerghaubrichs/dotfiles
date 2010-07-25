@@ -38,3 +38,16 @@ snippet cla
 	private:
 		${3}
 	};
+
+snippet class
+	class ${1:classname} {
+	public:
+		$1 (${2}){
+		}
+		virtual ~$1 (){}
+	
+	private:
+		${3}
+	};
+snippet this
+	this->${1}
