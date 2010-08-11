@@ -41,6 +41,9 @@ alias lisp="sbcl --script "
 alias ilisp="sbcl --noinform"
 alias clj="java -cp /usr/share/java:/usr/share/java/clojure-contrib.jar:/usr/share/java/jline.jar:/usr/share/java/clojure.jar jline.ConsoleRunner clojure.main"
 
+alias cd='pushd'
+alias bd='popd'
+
 md() { 
     echo "<?xml version='1.0' encoding='UTF-8'?> `markdown $1`" > $1.html;
 }
