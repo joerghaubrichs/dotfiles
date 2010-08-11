@@ -5,7 +5,6 @@ set go-=T
 set bg=dark
 if &background == "dark"
     hi normal guibg=black
-    "set transp=6
 endif
 
 colors joerg
@@ -19,12 +18,4 @@ for p in sys.path:
     if os.path.isdir(p):
         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
-
-function! Pretty()
-python << EOF
-import vim, BeautifulSoup
-soup = BeautifulSoup.BeautifulSoup("".join(vim.current.buffer[:]))
-vim.current.buffer[:] = soup.prettify().split('\n')
-EOF
-endfunction
 
