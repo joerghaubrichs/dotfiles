@@ -1,37 +1,45 @@
+colors desert
 set hlsearch
 set number
 set expandtab
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
 set background=dark
 set autoindent
 set textwidth=0
 set columns=120
 
+colorscheme fruidle
 syntax on
 filetype on
 
-if has("autocmd")
-    filetype indent on
-endif
-
-au BufNewFile,BufRead *.treetop set filetype=treetop
+au BufNewFile,BufRead *.lzx set filetype=xml
 au BufNewFile,BufRead *.mkd set filetype=mkd
-au BufNewFile,BufRead *.markdown set filetype=mkd
-au BufRead,BufNewFile *.go set filetype=go
+au BufNewFile,BufRead *.go set filetype=go
+autocmd BufEnter *.fastc set filetype=cpp
 
-filetype plugin on
 
 " automatically save and restore folds
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
 
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
+"inoremap { {}<Esc>i
+"inoremap ' ''<Esc>i
+"inoremap " ""<Esc>i
+
+inoremap ( ()<Esc>:let leavechar=")"<CR>i
+inoremap [ []<Esc>:let leavechar="]"<CR>i
+inoremap { {}<Esc>:let leavechar="}"<CR>i
+inoremap " ""<Esc>:let leavechar="\""<CR>i
+inoremap ' ''<Esc>:let leavechar="'"<CR>i
+imap <D-j> <Esc>:exec "normal f" . leavechar<CR>a
+"imap <D-j> <Esc>?[{(]<CR>%a
+
+vnoremap _( <Esc>`>a)<Esc>`<i(<Esc>
+
 
 " map ":make" to the F9 key
 imap <D-CR> <ESC>:!make -s run<CR>
@@ -50,5 +58,4 @@ set backspace=indent,eol,start
 set ruler
 set foldcolumn=4
 
-
-colors emacs
+filetype plugin on
